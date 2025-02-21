@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Controller
 {
-        public class ScreenController : IControll<Logic.Structs.Screen>
+        public class ScreenController : IControll<Logic.Structs.Screen>, IScreenController
         {
                 public Screen Info => new( );
                 public static ScreenController Instance
