@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/xConsole_screen/CopilotIndices/17.12.38.29086
+/.vs/xConsole_screen/FileContentIndex
+/.vs
+/Solution.Screen/Screen/.vs/Screen
+/Solution.Screen/Screen/ConApp/obj
+/Solution.Screen/Screen/Logic/obj
+/Solution.Screen/Screen/ScreenUnitTest/bin
+/Solution.Screen/Screen/ScreenUnitTest/obj
