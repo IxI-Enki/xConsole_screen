@@ -1,10 +1,19 @@
-﻿namespace ConApp
+﻿using Logic.Args;
+using Logic.Controller;
+using Logic.Structs;
+
+namespace ConApp;
+
+internal class Program
 {
-    internal class Program
-    {
-        static void Main(string[] args)
+        static void Main( string[] args )
         {
-            Console.WriteLine("Hello, World!");
+                Console.CursorVisible = false;
+                var sc = ScreenController.Instance;
+
+                while(true)
+                {
+                        Thread.Sleep( 40 );
+                }
         }
-    }
 }
