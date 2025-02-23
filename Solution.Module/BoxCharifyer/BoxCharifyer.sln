@@ -13,7 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution.Logic", "Solution.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution.UnitTest", "Solution.UnitTest", "{19665E8E-8F95-4F5F-BB52-105FACAC6FF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConApp", "ConApp\ConApp.csproj", "{E98B7EF0-2742-4026-A8DA-A01B6467D5C1}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -21,5 +33,6 @@ Global
 		{94A4ED19-966F-4322-9401-C37AE8C4BA88} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
 		{6BCD9AAE-FECE-48A5-A1AF-9E038B32C3D8} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
 		{19665E8E-8F95-4F5F-BB52-105FACAC6FF0} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
+		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1} = {94A4ED19-966F-4322-9401-C37AE8C4BA88}
 	EndGlobalSection
 EndGlobal
