@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3038318F-A7F3-4357-84A2-80FF19E8E459}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution.ConApp", "Solution.ConApp", "{94A4ED19-966F-4322-9401-C37AE8C4BA88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution.Logic", "Solution.Logic", "{6BCD9AAE-FECE-48A5-A1AF-9E038B32C3D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution.UnitTest", "Solution.UnitTest", "{19665E8E-8F95-4F5F-BB52-105FACAC6FF0}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94A4ED19-966F-4322-9401-C37AE8C4BA88} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
+		{6BCD9AAE-FECE-48A5-A1AF-9E038B32C3D8} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
+		{19665E8E-8F95-4F5F-BB52-105FACAC6FF0} = {3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}
+	EndGlobalSection
+EndGlobal
