@@ -108,12 +108,16 @@ static public class ScreenCapturer
                         {
                                 Console.WriteLine( a.Value );
                                 Thread.Sleep( 100 );
+#if DEBUG
                                 if(a.Key.Contains( "3x3" ))
                                         ScreenCapturer.CaptureFirstThreeXThreeCharsOnConsole( );
-                                if(a.Key.Contains( "5x5" ))
-                                        ScreenCapturer.CaptureFirstFiveXFiveCharsOnConsole();
+
+                                else if(a.Key.Contains( "5x5" ))
+                                        ScreenCapturer.CaptureFirstFiveXFiveCharsOnConsole( );
+                                else
+                                        ScreenCapturer.CaptureFirstCharOnConsole( );
+#endif
                                 Thread.Sleep( 100 );
-                                //Console.ReadLine( );
                                 Console.Clear( );
                         }
                         Console.WriteLine( "\nSamples saved to Output directory".ForegroundColor( "green" ) );
@@ -121,61 +125,73 @@ static public class ScreenCapturer
                 }
 
                 internal static readonly Dictionary<string , string> StaticColors_DEFAULT = new( )
-        {
-             ///  { // develoment - copy/paste - template
-             ///           " devTemplate ",
-             ///           "0;0;0"
-             ///  },
                 {
-                        "DEFAULT",
-                        "0;0;0"
-                },
-                {
-                        "black",
-                        "0;0;0"
-                },
-                {
-                        "white",
-                        "255;255;255"
-                },
-                {
-                        "red",
-                        "255;0;0"
-                },
-                {
-                        "green",
-                        "0;255;0"
-                },
-                {
-                        "blue",
-                        "0;0;255"
-                },
-                {
-                        "gray",
-                        "128;128;128"
-                },
-        };
+                        ///  { // develoment - copy/paste - template
+                        ///           " devTemplate ",
+                        ///           "0;0;0"
+                        ///  },
+                        {
+                                "DEFAULT",
+                                "0;0;0"
+                        },
+                        {
+                                "black",
+                                "0;0;0"
+                        },
+                        {
+                                "white",
+                                "255;255;255"
+                        },
+                        {
+                                "red",
+                                "255;0;0"
+                        },
+                        {
+                                "green",
+                                "0;255;0"
+                        },
+                        {
+                                "blue",
+                                "0;0;255"
+                        },
+                        {
+                                "gray",
+                                "128;128;128"
+                        },
+                        {
+                                "yellow",
+                                "255;255;0"
+                        },
+                        {
+                                "cyan",
+                                "0;255;255"
+                        },
+                        {
+                                "magenta",
+                                "255;0;255"
+                        },
+                };
 
                 internal static readonly Dictionary<string , string> StaticTestScreens_DEFAULT = new( )
                 {
-                     ///  { // develoment - copy/paste - template
-             ///           " devTemplate ",
-             ///           "   "
-             ///  },
+                        ///  { // develoment - copy/paste - template
+                        ///           " devTemplate ",
+                        ///           "   "
+                        ///  },
                         {
-                        "DEFAULT",
-                        "+"
+                                "DEFAULT",
+                                "+"
                         },
                         {
-                        "1x1",
-                        "0"
+                                "1x1",
+                                "0"
                         },
                         {
-                        "1x1DEFAULT",
-                        "+"
+                                "1x1DEFAULT",
+                                "+"
                         },
                         {
-                        "3x3",
+                                "3x3",
 
                                    "012"
                                 +"\n345"
@@ -183,36 +199,31 @@ static public class ScreenCapturer
 
                         },
                         {
-                        "3x3DEFAULT",
-
+                                "3x3DEFAULT",
                                    "█▓░"
                                 +"\n▒+▒"
                                 +"\n░▓█"
-
                         },
                         {
-                        "3x3COORDS",
+                                "3x3COORDS",
                                    "⊙₁₂"
                                 +"\n₁  "
                                 +"\n₂  "
-
                         },
                         {
-                        "3x3MEASURE",
+                                "3x3MEASURE",
                                    "  ┬"
                                 +"\n  ³"
                                 +"\n├³┼"
-
                         },
                         {
-                        "3x3COORDS&MEASURE",
+                                "3x3COORDS&MEASURE",
                                    "⊙₁╷"
                                 +"\n₁ ³"
                                 +"\n╶³┼"
-
                         },
                         {
-                        "5x5COORDS",
+                                "5x5COORDS",
                                    "⊙₁₂₃₄"
                                 +"\n₁    "
                                 +"\n₂ █  "
@@ -220,7 +231,7 @@ static public class ScreenCapturer
                                 +"\n₄    "
                         },
                         {
-                        "5x5MEASURE",
+                                "5x5MEASURE",
                                    "    ┯"
                                 +"\n    │"
                                 +"\n  █ ⁵"
@@ -228,7 +239,7 @@ static public class ScreenCapturer
                                 +"\n┠─⁵─╆"
                         },
                         {
-                        "5x5CORDS&MEASURE",
+                                "5x5CORDS&MEASURE",
                                    "⊙₁₂₃₄"
                                 +"\n₁   ╿"
                                 +"\n₂ █ ⁵"
@@ -236,7 +247,7 @@ static public class ScreenCapturer
                                 +"\n₄╾⁵─╆"
                         },
                         {
-                        "5x5FULL",
+                                "5x5FULL",
                                    "⊙₁₂₃₄"
                                 +"\n₁╲N▖╿"
                                 +"\n₂W╳E⁵"
