@@ -1,10 +1,9 @@
-﻿namespace ConApp
+﻿namespace ConApp; 
+
+internal class Program
 {
-    internal class Program
-    {
-        static void Main(string[] args)
+        static void Main( )
         {
-            Console.WriteLine("Hello, World!");
+                Console.Write( "Hello, Charifyer!" );
         }
-    }
 }
