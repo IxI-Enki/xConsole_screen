@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Contracts
+namespace Logic.Modules.BoxDrawer
 {
-        internal class ControllerBase
+        internal class Program
         {
+
+
+
         }
 }

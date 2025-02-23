@@ -12,6 +12,6 @@ public class ScreenArgs( Screen oldValue , Screen newValue ) : StructEventArgs<L
 // Generische EventArgs-Klasse für die Benachrichtigung
 public class StructEventArgs<T>( T oldValue , T newValue ) : EventArgs where T : struct
 {
-        public T OldValue { get; } = oldValue;
-        public T NewValue { get; } = newValue;
+        public T LastValue { get; } = oldValue;
+        public T CurrentValue  { get; } = newValue;
 }

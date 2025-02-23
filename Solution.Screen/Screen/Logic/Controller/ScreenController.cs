@@ -9,18 +9,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Controller
 {
-        public class ScreenController : IControll<Logic.Structs.Screen>, IScreenController
+        public partial class ScreenController
         {
+
                 public Screen Info => new( );
-                public static ScreenController Instance
-                {
-                        get
-                        {
-                                lock(_lock)
-                                        return _instance ?? new( );
-                        }
-                        private set;
-                }
                 public event EventHandler<StructEventArgs<Screen>>? OnEvent;
 
                 public void Run( )
@@ -50,26 +42,18 @@ namespace Logic.Controller
 
                 internal Screen LastScreen { get; private set; } = default;
 
-                internal void SetLastScreen( object? s , StructEventArgs<Screen> sI ) => LastScreen = sI.NewValue;
+                internal void SetLastScreen( object? s , StructEventArgs<Screen> sI ) => LastScreen = sI.CurrentValue;
                 internal protected void Notify( Screen s ) => OnEvent?.Invoke( this , new ScreenArgs( LastScreen , s ) );
                 private static void Print( object? sender , StructEventArgs<Screen> e )
                 {
                         Console.SetCursorPosition( 0 , 0 );
-                        Console.Write( $"{e.NewValue.WindowSize,30}" );
+                        Console.Write( $"{e.CurrentValue.WindowSize,30}" );
                 }
 
                 private static readonly ScreenController? _instance;
                 private volatile bool _running = false;
                 private static readonly object _lock = new( );
 
-                static ScreenController( )
-                {
-                        Instance = new( );
 
-                        Thread listen = new( Instance.Run ) { IsBackground = true };
-
-                        listen.Start( );
-                }
-                private ScreenController( ) { }
         }
 }
