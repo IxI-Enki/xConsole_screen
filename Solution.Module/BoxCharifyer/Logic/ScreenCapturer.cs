@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 
 using SkiaSharp;
+using Logic.Extensions;
 
 namespace Logic;
 
@@ -71,7 +72,7 @@ static public class ScreenCapturer
                                     new Size( width , height )
                                 );
                         }
-                        string timestamp = DateTime.Now.ToString( "yyyyMMdd_HHmmss" );
+                        string timestamp = DateTime.Now.ToString( "yyyy-MM-dd_HHmmss_fff" );
                         string filePath = Path.Combine( OutputDirectory , $"capture_{timestamp}.png" );
                         bitmap.Save( filePath , ImageFormat.Png );
                 }
@@ -87,6 +88,162 @@ static public class ScreenCapturer
         [System.Runtime.Versioning.SupportedOSPlatform( "windows" )]
         public static void CaptureFirstCharOnConsole( ) => CaptureRegion( CharSize );
         [System.Runtime.Versioning.SupportedOSPlatform( "windows" )]
+        public static void CaptureFirstFiveXFiveCharsOnConsole( ) => CaptureRegion( new Size( (CharSize.Width * 5) - (1 * 5) , (CharSize.Height * 5) - (6 * 5) ) );
+        [System.Runtime.Versioning.SupportedOSPlatform( "windows" )]
         public static void CaptureCharAtCursorPosition( int x , int y ) => CaptureRegion( CharSize , x * CharSize.Width , y * CharSize.Height );
+        #endregion
+
+        #region PRINTER SUBCLASS
+        public static class Printer
+        {
+                public static void CreateNewTestScreensSampleSet_DEFAULT( )
+                {
+                        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+                        Console.WriteLine( "press enter to start" );
+                        Console.ReadLine( );
+                        Console.Clear( );
+
+                        foreach(KeyValuePair<string , string> a in StaticTestScreens_DEFAULT)
+                        {
+                                Console.WriteLine( a.Value );
+                                Thread.Sleep( 100 );
+                                if(a.Key.Contains( "3x3" ))
+                                        ScreenCapturer.CaptureFirstThreeXThreeCharsOnConsole( );
+                                if(a.Key.Contains( "5x5" ))
+                                        ScreenCapturer.CaptureFirstFiveXFiveCharsOnConsole();
+                                Thread.Sleep( 100 );
+                                //Console.ReadLine( );
+                                Console.Clear( );
+                        }
+                        Console.WriteLine( "\nSamples saved to Output directory".ForegroundColor( "green" ) );
+                        Console.ReadLine( );
+                }
+
+                internal static readonly Dictionary<string , string> StaticColors_DEFAULT = new( )
+        {
+             ///  { // develoment - copy/paste - template
+             ///           " devTemplate ",
+             ///           "0;0;0"
+             ///  },
+                {
+                        "DEFAULT",
+                        "0;0;0"
+                },
+                {
+                        "black",
+                        "0;0;0"
+                },
+                {
+                        "white",
+                        "255;255;255"
+                },
+                {
+                        "red",
+                        "255;0;0"
+                },
+                {
+                        "green",
+                        "0;255;0"
+                },
+                {
+                        "blue",
+                        "0;0;255"
+                },
+                {
+                        "gray",
+                        "128;128;128"
+                },
+        };
+
+                internal static readonly Dictionary<string , string> StaticTestScreens_DEFAULT = new( )
+                {
+                     ///  { // develoment - copy/paste - template
+             ///           " devTemplate ",
+             ///           "   "
+             ///  },
+                        {
+                        "DEFAULT",
+                        "+"
+                        },
+                        {
+                        "1x1",
+                        "0"
+                        },
+                        {
+                        "1x1DEFAULT",
+                        "+"
+                        },
+                        {
+                        "3x3",
+
+                                   "012"
+                                +"\n345"
+                                +"\n678"
+
+                        },
+                        {
+                        "3x3DEFAULT",
+
+                                   "█▓░"
+                                +"\n▒+▒"
+                                +"\n░▓█"
+
+                        },
+                        {
+                        "3x3COORDS",
+                                   "⊙₁₂"
+                                +"\n₁  "
+                                +"\n₂  "
+
+                        },
+                        {
+                        "3x3MEASURE",
+                                   "  ┬"
+                                +"\n  ³"
+                                +"\n├³┼"
+
+                        },
+                        {
+                        "3x3COORDS&MEASURE",
+                                   "⊙₁╷"
+                                +"\n₁ ³"
+                                +"\n╶³┼"
+
+                        },
+                        {
+                        "5x5COORDS",
+                                   "⊙₁₂₃₄"
+                                +"\n₁    "
+                                +"\n₂ █  "
+                                +"\n₃    "
+                                +"\n₄    "
+                        },
+                        {
+                        "5x5MEASURE",
+                                   "    ┯"
+                                +"\n    │"
+                                +"\n  █ ⁵"
+                                +"\n    │"
+                                +"\n┠─⁵─╆"
+                        },
+                        {
+                        "5x5CORDS&MEASURE",
+                                   "⊙₁₂₃₄"
+                                +"\n₁   ╿"
+                                +"\n₂ █ ⁵"
+                                +"\n₃   │"
+                                +"\n₄╾⁵─╆"
+                        },
+                        {
+                        "5x5FULL",
+                                   "⊙₁₂₃₄"
+                                +"\n₁╲N▖╿"
+                                +"\n₂W╳E⁵"
+                                +"\n₃▞S▟│"
+                                +"\n₄╾⁵─╆"
+                        },
+                };
+        }
         #endregion
 }
