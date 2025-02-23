@@ -24,6 +24,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Charifyer Output", "Charifyer Output", "{1C2E0591-6217-4B9A-95B1-14777620283A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "by_required_trainig_data", "by_required_trainig_data", "{88D2A2E3-4E76-4185-9105-360BF2895ACE}"
+	ProjectSection(SolutionItems) = preProject
+		_api_readme.md = _api_readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +58,6 @@ Global
 		{E98B7EF0-2742-4026-A8DA-A01B6467D5C1} = {94A4ED19-966F-4322-9401-C37AE8C4BA88}
 		{FE0F19E1-DF33-4F53-A3EC-A20BC0DF290A} = {6BCD9AAE-FECE-48A5-A1AF-9E038B32C3D8}
 		{C1FF6859-C29E-47BA-9867-79106D41AE1D} = {19665E8E-8F95-4F5F-BB52-105FACAC6FF0}
+		{88D2A2E3-4E76-4185-9105-360BF2895ACE} = {1C2E0591-6217-4B9A-95B1-14777620283A}
 	EndGlobalSection
 EndGlobal
