@@ -49,9 +49,6 @@ static public class ScreenCapturer
       #endregion
 
       #region ___M E T H O D S___ 
-
-
-
       internal static Bitmap Capture( int width , int height ) => Capture( width , height , 0 , 0 );
       internal static Bitmap Capture( int width , int height , int wOffset , int hOffset )
       {
@@ -161,42 +158,34 @@ static public class ScreenCapturer
             {
                   Console.OutputEncoding = System.Text.Encoding.UTF8;
                   Console.CursorVisible = false;
-                  Console.WriteLine( "press enter to start" );
-                  Console.ReadLine( );
+
                   Console.Clear( );
 
                   foreach(KeyValuePair<string , string> a in StaticTestScreens_DEFAULT)
                   {
                         Console.WriteLine( a.Value );
-
-
-                        if(a.Key.Contains( "3x3" ))
-                        {
-                              Console.SetCursorPosition( 1 , 1 );
-                              Console.Write( toPrint.ToString( ).ForegroundColor( RandomColor( ) ) );
-                              Thread.Sleep( 100 );
-                              CaptureFirstThreeXThreeCharsOnConsole( );
-                        }
-
-                        else if(a.Key.Contains( "5x5" ))
+                        if(a.Key.Contains( "THISCHAR" ))
                         {
                               Console.SetCursorPosition( 2 , 2 );
-                              Console.Write( toPrint.ToString( ).ForegroundColor( RandomColor( ) ) );
+                              Console.Write( toPrint.ToString( ).ForegroundColor( RandomColor( ) ).BackgroundColor( RandomColor( ) ) );
                               Thread.Sleep( 100 );
                               ScreenCapturer.CaptureFirstFiveXFiveCharsOnConsole( );
                         }
-                        else
-                        {
+                        ///     else if(a.Key.Contains( "3x3DEFAULT" ))
+                        ///     {
+                        ///           Console.SetCursorPosition( 1 , 1 );
+                        ///           Console.Write( toPrint.ToString( ).ForegroundColor( RandomColor( ) ).BackgroundColor( RandomColor( ) ) );
+                        ///           Thread.Sleep( 100 );
+                        ///           ScreenCapturer.CaptureFirstThreeXThreeCharsOnConsole( );
+                        ///     }
+                        ///else
+                        ///{
+                        ///      //Thread.Sleep( 100 );
+                        ///      //ScreenCapturer.CaptureFirstCharOnConsole( );
+                        ///}
 
-                              Thread.Sleep( 100 );
-                              ScreenCapturer.CaptureFirstCharOnConsole( );
-                        }
-
-                        Thread.Sleep( 150 );
                         Console.Clear( );
-                  }
-                  Console.WriteLine( "\nSamples saved to Output directory".ForegroundColor( "green" ) );
-                  Console.ReadLine( );
+                  } 
 
                   string RandomColor( )
                   {
@@ -388,6 +377,18 @@ static public class ScreenCapturer
                   },
                   {
                         "5x5EMPTY",
+                        string.Concat(
+
+                              "⊙₁₂₃₄"       ,"\n",
+                              "₁   ╿"       ,"\n",
+                              "₂   ⁵"       ,"\n",
+                              "₃   │"       ,"\n",
+                              "₄╾⁵─╆"
+
+                        )
+                  },
+                  {
+                        "THISCHAR",
                         string.Concat(
 
                               "⊙₁₂₃₄"       ,"\n",
