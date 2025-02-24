@@ -1,21 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Data;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
-
-using SkiaSharp;
 using Logic.Extensions;
-using System.Text.RegularExpressions;
-using System.Linq;
-
+using SkiaSharp;
 namespace Logic;
 
 [System.Runtime.Versioning.SupportedOSPlatform( "windows" )]
 static public class ScreenCapturer
 {
       #region ___F I E L D S___ 
-
       private static readonly int
               _windowHeaderHeight = 42,
               _fontSize = 64;
@@ -48,25 +40,7 @@ static public class ScreenCapturer
       public static Size CharSize { get => _charSize; set => _charSize = value; }
       #endregion
 
-      #region ___M E T H O D S___ 
-      internal static Bitmap Capture( int width , int height ) => Capture( width , height , 0 , 0 );
-      internal static Bitmap Capture( int width , int height , int wOffset , int hOffset )
-      {
-            Bitmap res = new( width , height );
-
-            using Graphics graphics = Graphics.FromImage( res );
-
-            graphics.CopyFromScreen(
-                wOffset ,
-                _windowHeaderHeight + hOffset ,
-                0 ,
-                0 ,
-                new Size( width , height )
-            );
-
-            return res;
-      }
-
+      #region ___I N T E R N A L   M E T H O D S___ 
       /// <summary>
       /// Captures a Region on the Screen as .png in the output-directory
       /// </summary>
@@ -90,6 +64,24 @@ static public class ScreenCapturer
             catch(Exception ex) { Console.WriteLine( $"Error capturing screen: {ex.Message}" ); }
             return res;
       }
+      internal static Bitmap Capture( int width , int height , int wOffset , int hOffset )
+      {
+            Bitmap res = new( width , height );
+
+            using Graphics graphics = Graphics.FromImage( res );
+
+            graphics.CopyFromScreen(
+                wOffset ,
+                _windowHeaderHeight + hOffset ,
+                0 ,
+                0 ,
+                new Size( width , height )
+            );
+
+            return res;
+      }
+      internal static Bitmap Capture( int width , int height )
+            => Capture( width , height , 0 , 0 );
 
       internal static void CaptureSquareRegion( int width , int height , int wOffset = 0 , int hOffset = 0 , string backgroundColorName = "" )
       {
@@ -143,12 +135,18 @@ static public class ScreenCapturer
                   squareBitmap.Save( filePath , ImageFormat.Png );
             }
       }
-      internal static Bitmap? CaptureRegion( Size size ) => CaptureRegion( size.Width , size.Height );
-      internal static Bitmap? CaptureRegion( Size size , int widthOffset = 0 , int heightOffset = 0 ) => CaptureRegion( size.Width , size.Height , widthOffset , heightOffset );
-      internal static Bitmap? CaptureFirstCharOnConsole( ) => CaptureRegion( CharSize );
-      internal static Bitmap? CaptureCharAtCursorPosition( int x , int y ) => CaptureRegion( CharSize , x * CharSize.Width , y * CharSize.Height );
-      internal static Bitmap? CaptureFirstThreeXThreeCharsOnConsole( ) => CaptureRegion( new Size( (CharSize.Width * 3) - (1 * 3) , (CharSize.Height * 3) - (6 * 3) ) );
-      internal static Bitmap? CaptureFirstFiveXFiveCharsOnConsole( ) => CaptureRegion( new Size( (CharSize.Width * 5) - (1 * 5) , (CharSize.Height * 5) - (6 * 5) ) );
+      internal static Bitmap? CaptureRegion( Size size )
+            => CaptureRegion( size.Width , size.Height );
+      internal static Bitmap? CaptureRegion( Size size , int widthOffset = 0 , int heightOffset = 0 )
+            => CaptureRegion( size.Width , size.Height , widthOffset , heightOffset );
+      internal static Bitmap? CaptureFirstCharOnConsole( )
+            => CaptureRegion( CharSize );
+      internal static Bitmap? CaptureCharAtCursorPosition( int x , int y )
+            => CaptureRegion( CharSize , x * CharSize.Width , y * CharSize.Height );
+      internal static Bitmap? CaptureFirstThreeXThreeCharsOnConsole( )
+            => CaptureRegion( new Size( (CharSize.Width * 3) - (1 * 3) , (CharSize.Height * 3) - (6 * 3) ) );
+      internal static Bitmap? CaptureFirstFiveXFiveCharsOnConsole( )
+            => CaptureRegion( new Size( (CharSize.Width * 5) - (1 * 5) , (CharSize.Height * 5) - (6 * 5) ) );
       #endregion
 
       #region PRINTER SUBCLASS
@@ -185,7 +183,7 @@ static public class ScreenCapturer
                         ///}
 
                         Console.Clear( );
-                  } 
+                  }
 
                   string RandomColor( )
                   {
@@ -229,7 +227,6 @@ static public class ScreenCapturer
                   Console.WriteLine( "\nSamples saved to Output directory".ForegroundColor( "green" ) );
                   Console.ReadLine( );
             }
-
             public static void CreateNewTestScreensSampleSet_DEFAULT_SQUARED( ) => CreateNewTestScreensSampleSet_DEFAULT( squared: true );
 
             internal static readonly Dictionary<string , string> StaticColors_DEFAULT = new( )
@@ -279,7 +276,6 @@ static public class ScreenCapturer
                                 "255;0;255"
                         },
                 };
-
             internal static readonly Dictionary<string , string> StaticTestScreens_DEFAULT = new( )
             {
                   ///  { // develoment - copy/paste - template

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Text;
 namespace Logic.Structs;
 
 public static class TCharExtensions
@@ -16,18 +11,11 @@ public static class TCharExtensions
       public static void PrintAllBoxChars( )
       {
             Console.OutputEncoding = Encoding.UTF8;
-
-            foreach(char c in _allChars)
-            {
-                  Console.Write( c + " " );
-            }
+            foreach(char c in _allChars) Console.Write( c + " " );
       }
 }
 public struct TChar
 {
-
-
       public char Char;
-
-      public static void PrintAllBoxChars( ) => Logic.Structs.TCharExtensions.PrintAllBoxChars( );
+      public static void PrintAllBoxChars( ) => TCharExtensions.PrintAllBoxChars( );
 }

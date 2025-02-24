@@ -1,14 +1,12 @@
 ﻿using Logic;
-using Logic.Structs;
-using SC = Logic.ScreenCapturer;
-
 namespace ConApp;
 
+[System.Runtime.Versioning.SupportedOSPlatform( "windows" )]
 internal class Program
 {
       static void Main( )
       {
-            //Logic.Structs.TChar.PrintAllBoxChars( );
+            ///Logic.Structs.TChar.PrintAllBoxChars( );
             ///  Console.ReadLine( );
             ///  Console.Clear( );
             ///  Console.Write( "╫" ); // Example character
@@ -39,28 +37,20 @@ internal class Program
             ///  Thread.Sleep( 1500 );
             ///  ScreenCapturer.CaptureFirstThreeXThreeCharsOnConsole( );
             ///  Console.Clear( );
-
-            //ScreenCapturer.Printer.CreateNewTestScreensSampleSet_DEFAULT( );
-            //ScreenCapturer.Printer.CreateNewTestScreensSampleSet_Of( '╀' );
-            //ScreenCapturer.Printer.CreateNewTestScreensSampleSet_DEFAULT_SQUARED( );
-
-            string q = 
+            ///ScreenCapturer.Printer.CreateNewTestScreensSampleSet_DEFAULT( );
+            ///ScreenCapturer.Printer.CreateNewTestScreensSampleSet_Of( '╀' );
+            ///ScreenCapturer.Printer.CreateNewTestScreensSampleSet_DEFAULT_SQUARED( );
+            string q =
                   //TCharExtensions.ReturnAllBoxChars( );
-                  AlphaNumeric();
+                  AlphaNumeric( );
 
             Console.WriteLine( "press enter to start" );
             Console.ReadLine( );
 
             int x = 25;
-
             for(int i = 0 ; i < x ; i++)
                   foreach(char c in q)
                         ScreenCapturer.Printer.CreateNewTestScreensSampleSet_Of( c );
-
-            //Console.WriteLine(q );
-
-
-
 
             Console.ReadLine( );
       }
