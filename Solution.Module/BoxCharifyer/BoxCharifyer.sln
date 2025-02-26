@@ -1,11 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3038318F-A7F3-4357-84A2-80FF19E8E459}"
 	ProjectSection(SolutionItems) = preProject
+		img\char.png = img\char.png
+		img\color.png = img\color.png
+		img\dataset-creation-files.png = img\dataset-creation-files.png
+		img\dataset-creation-output-test.png = img\dataset-creation-output-test.png
+		img\dataset-creation-skiacode.png = img\dataset-creation-skiacode.png
+		img\heart.png = img\heart.png
+		img\main-testapp.png = img\main-testapp.png
 		README.md = README.md
+		img\screencap.png = img\screencap.png
+		img\solution.png = img\solution.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{3CF3AB5A-5C89-4228-A679-A94A4C3FA2F9}"
