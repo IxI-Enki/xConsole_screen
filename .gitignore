@@ -21,3 +21,7 @@
 /Solution.Module/BoxCharifyer
 /Solution.Module/BoxComposer/.vs
 /Solution.Module/BoxComposer/ConApp/obj
+/Solution.Module/BoxComposer/Common/obj
+/Solution.Module/BoxComposer/ConApp/bin/Debug/net9.0
+/Solution.Module/BoxComposer/Logic/obj
+/Solution.Module/BoxComposer/UnitTests/obj

@@ -11,11 +11,9 @@ static public class ScreenCapturer
       private static readonly int
               _windowHeaderHeight = 42,
               _fontSize = 64;
-
       private static string
               _outputDirectory_DEFAULT = "Output",
               _outputDirectory = string.Empty;
-
       private static Size
               _charSize = new( _fontSize - 1 , (_fontSize * 2) - 2 );
       #endregion
@@ -28,7 +26,6 @@ static public class ScreenCapturer
             internal set
             {
                   string res = value != string.Empty ? value : _outputDirectory_DEFAULT;
-
                   if(!Directory.Exists( res ))
                   {
                         Directory.CreateDirectory( res );
@@ -77,64 +74,49 @@ static public class ScreenCapturer
                 0 ,
                 new Size( width , height )
             );
-
             return res;
       }
-      internal static Bitmap Capture( int width , int height )
-            => Capture( width , height , 0 , 0 );
-
       internal static void CaptureSquareRegion( int width , int height , int wOffset = 0 , int hOffset = 0 , string backgroundColorName = "" )
       {
             using Bitmap? captured = new( width , height );
-
             try
             {
                   using Bitmap bitmap = Capture( width , height , wOffset , hOffset );
                   string timestamp = DateTime.Now.ToString( "yyyy-MM-dd_HHmmss_fff" );
-
-
                   string filePath = Path.Combine( OutputDirectory , $"capture_{timestamp}.png" );
                   bitmap.Save( filePath , ImageFormat.Png );
             }
             catch(Exception ex) { Console.WriteLine( $"Error capturing screen: {ex.Message}" ); }
-
             // Determine smallest square size
             int squareSize = Math.Max( width , height );
-
             // Create new square bitmap with background color
             using(Bitmap squareBitmap = new( squareSize , squareSize ))
             {
                   using(Graphics squareGraphics = Graphics.FromImage( squareBitmap ))
-                  {
-                        // Set background color
+                  { // Set background color
                         Color backgroundColor;
                         try
                         {
                               backgroundColor = Color.FromName( backgroundColorName );
                               if(backgroundColor.A == 0 && backgroundColor.R == 0 && backgroundColor.G == 0 && backgroundColor.B == 0)
-                              {
                                     backgroundColor = Color.Gray; // Fallback if color name not recognized
-                              }
                         }
-                        catch
-                        {
-                              backgroundColor = Color.Gray; // Fallback for invalid color names
-                        }
-
+                        // Fallback for invalid color names
+                        catch { backgroundColor = Color.Gray; }
                         squareGraphics.Clear( backgroundColor );
-
                         // Center the captured image
                         int xOffset = (squareSize - width) / 2;
                         int yOffset = (squareSize - height) / 2;
                         squareGraphics.DrawImage( captured , xOffset , yOffset );
-                  }
-
-                  // Save the squared image
+                  } // Save the squared image
                   string timestamp = DateTime.Now.ToString( "yyyyMMdd_HHmmss_fff" );
                   string filePath = Path.Combine( "SquareSamples" , $"square_capture_{timestamp}.png" );
                   squareBitmap.Save( filePath , ImageFormat.Png );
             }
       }
+
+      internal static Bitmap Capture( int width , int height )
+            => Capture( width , height , 0 , 0 );
       internal static Bitmap? CaptureRegion( Size size )
             => CaptureRegion( size.Width , size.Height );
       internal static Bitmap? CaptureRegion( Size size , int widthOffset = 0 , int heightOffset = 0 )
@@ -152,6 +134,7 @@ static public class ScreenCapturer
       #region PRINTER SUBCLASS
       public static class Printer
       {
+            #region ___P U B L I C   M E T H O D S___ 
             public static void CreateNewTestScreensSampleSet_Of( char toPrint )
             {
                   Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -228,7 +211,9 @@ static public class ScreenCapturer
                   Console.ReadLine( );
             }
             public static void CreateNewTestScreensSampleSet_DEFAULT_SQUARED( ) => CreateNewTestScreensSampleSet_DEFAULT( squared: true );
+            #endregion
 
+            #region ___F I E L D S___ 
             internal static readonly Dictionary<string , string> StaticColors_DEFAULT = new( )
                 {
                         ///  { // develoment - copy/paste - template
@@ -396,6 +381,7 @@ static public class ScreenCapturer
                         )
                   },
             };
+            #endregion
       }
       #endregion
 }
